@@ -1,0 +1,59 @@
+.feed {
+    // border: 2px solid teal;
+    width: 100%;
+    height: 100vh;
+
+    .content {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        // border: 2px solid red;
+        overflow: hidden;
+
+
+        .left {
+            flex: 2;
+            overflow-y: auto;
+        }
+
+        .left::-webkit-scrollbar {
+            display: none;
+        }
+
+        .right {
+            flex: 1;
+            margin-top: 20px;
+            // border: 2px solid red;
+            height: 290px;
+
+            .followings {
+                border: 1px solid var(--border-color);
+                width: 60%;
+                height: 100%;
+                margin-bottom: 20px;
+                border-radius: 5px;
+
+                .title {
+                    border-bottom: 1px solid var(--border-color);
+                    padding: 12px;
+
+                }
+            }
+
+            .suggestions {
+                border: 1px solid var(--border-color);
+                border-radius: 5px;
+                width: 60%;
+                height: 100%;
+                // padding: 12px;
+
+                .title {
+                    border-bottom: 1px solid var(--border-color);
+                    padding: 12px;
+
+                }
+            }
+        }
+    }
+}
