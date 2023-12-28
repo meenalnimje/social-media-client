@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import { axiosClient } from "../../utiles/axiosClient";
 import { setLoading } from "./appConfigSlice";
+
 export const getUserInfo = createAsyncThunk(
   "user/getUserInfo",
   async (body, thunkAPI) => {
@@ -27,44 +29,6 @@ export const likeUnlike = createAsyncThunk(
       return response.result.post;
     } catch (e) {
       console.log("this error is from likeandUnlike postSlice side ", e);
-      return Promise.reject(e);
-    } finally {
-      thunkAPI.dispatch(setLoading(false));
-    }
-  }
-);
-export const getBookmarkPost = createAsyncThunk(
-  "get/bookmarkPost",
-  async (_, thunkAPI) => {
-    try {
-      thunkAPI.dispatch(setLoading(true));
-      const response = await axiosClient.get("/post/bookmarkpost");
-      console.log("response from getBookmarkPost ", response.result);
-      //isme mene ek modifier bheja hai
-      // isme hm meri bookmarked post le rahe hai
-      return response.result.modified;
-    } catch (e) {
-      console.log("this error is from bookmark postSlice side ", e);
-      return Promise.reject(e);
-    } finally {
-      thunkAPI.dispatch(setLoading(false));
-    }
-  }
-);
-export const BookmarkPost = createAsyncThunk(
-  "post/bookmark",
-  async (body, thunkAPI) => {
-    try {
-      thunkAPI.dispatch(setLoading(true));
-      const response = await axiosClient.post("/post/bookmark", body);
-      // this will give me action.payload=user
-      console.log(
-        "data from bookmark post where im bookmarking a post= ",
-        response.result
-      );
-      // return response.result;
-    } catch (e) {
-      console.log("this error is from bookmark postSlice side ", e);
       return Promise.reject(e);
     } finally {
       thunkAPI.dispatch(setLoading(false));

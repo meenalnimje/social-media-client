@@ -1,11 +1,15 @@
 // isme hm uski image name ur follow unfollow ka option denge.
-import React, { useState } from "react";
-import Avatar from "../avatar/Avatar";
+
 import "./Follower.scss";
+
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+
+import Avatar from "../avatar/Avatar";
 import { followUnfollow } from "../../redux/slice/feedSlice";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+
 function Followers({ props }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,21 +31,26 @@ function Followers({ props }) {
   }
   return (
     <div className="followers">
-      <Avatar src={props?.avatar?.url} />
-      <h4
-        className="name"
-        onClick={() => {
-          navigate(`/profile/${props._id}`);
-        }}
-      >
-        {props?.name}
-      </h4>
-      <h5
-        className={isFollowings ? "btn-secondary" : "btn-primary"}
-        onClick={handleFollowUnfollow}
-      >
-        {isFollowings ? "UnFollow" : "Follow"}
-      </h5>
+      <div className="profile-icon">
+        <Avatar src={props?.avatar?.url} />
+      </div>
+      <div className="name">
+        <h4
+          onClick={() => {
+            navigate(`/profile/${props._id}`);
+          }}
+        >
+          {props?.name}
+        </h4>
+      </div>
+      <div className="button">
+        <h5
+          className={isFollowings ? "btn-secondary" : "btn-primary"}
+          onClick={handleFollowUnfollow}
+        >
+          {isFollowings ? "UnFollow" : "Follow"}
+        </h5>
+      </div>
     </div>
   );
 }

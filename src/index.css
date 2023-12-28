@@ -34,7 +34,6 @@ p{
   font-weight: bold;
   padding: 10px 40px;
   border: none;
-  margin-top: 12px;
   border-radius: 4px;
   cursor: pointer;
 }
@@ -50,9 +49,8 @@ p{
   border: 2px solid var(--accent-color);
   color: var(--accent-color);
   font-weight: bold;
-  padding: 10px 40px;
+  padding: 10px 30px;
   border-radius: 4px;
-  margin-top: 12px;
   cursor: pointer;
   background: none;
 }

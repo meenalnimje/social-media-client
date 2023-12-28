@@ -1,13 +1,16 @@
+import "./CreatePost.scss";
+
 import React, { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import Avatar from ".././avatar/Avatar";
 import { BsCardImage } from "react-icons/bs";
-import bgImg from "../../assets/postImg.jpg";
 import { axiosClient } from "../../utiles/axiosClient";
-import "./CreatePost.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { setLoading } from "../../redux/slice/appConfigSlice";
+import bgImg from "../../assets/postImg.jpg";
 import { getUserInfo } from "../../redux/slice/postSlice";
+import { setLoading } from "../../redux/slice/appConfigSlice";
 import { useParams } from "react-router-dom";
+
 function CreatePost() {
   const [caption, setCaption] = useState("");
   const [postImg, setPostImg] = useState("");

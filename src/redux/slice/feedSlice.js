@@ -1,7 +1,9 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { setLoading } from "./appConfigSlice";
 import { BookmarkPost, getBookmarkPost, likeUnlike } from "./postSlice";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+
 import { axiosClient } from "../../utiles/axiosClient";
+import { setLoading } from "./appConfigSlice";
+
 export const getFeedData = createAsyncThunk(
   "user/getPostOfFollowing",
   async (_, thunkAPI) => {
@@ -67,19 +69,6 @@ const feedSlice = createSlice({
         } else {
           state?.feedData?.followings?.push(user);
         }
-      })
-      .addCase(BookmarkPost.fulfilled, (state, action) => {
-        const postId = action.payload?.bookmarkPostArr[0].toString();
-        const index = state.feedData.bookmarks.indexOf(postId);
-        if (index !== -1) {
-          state?.feedData?.bookmarks?.splice(index, 1);
-        } else {
-          state?.feedData?.bookmarks?.push(postId);
-        }
-      })
-      .addCase(getBookmarkPost.fulfilled, (state, action) => {
-        const modifiedBookmarks = action.payload;
-        state.feedData.bookmarks = [...modifiedBookmarks];
       });
   },
 });

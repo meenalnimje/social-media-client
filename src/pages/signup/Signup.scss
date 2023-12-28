@@ -6,15 +6,11 @@
         border: 2px solid black;
         border-radius: 5px;
         width: 26%;
-        height: 70%;
+        height: 60%;
         display: flex;
         flex-direction: column;
         align-items: center;
-
-        .icon {
-            margin: 20px;
-            font-size: 36px;
-        }
+        justify-content: space-evenly;
 
         .heading {
             font-size: 24px;
@@ -22,17 +18,17 @@
         }
 
         .signup-form {
-            position: relative;
-            top: 40px;
+            // position: relative;
+            // top: 40px;
             // border: 2px solid red;
-            width: 90%;
+            width: 80%;
             // border: 2px solid red;
 
             input {
-                margin-top: 10px;
-                margin-bottom: 10px;
+                margin-top: 5px;
+                margin-bottom: 5px;
                 width: 100%;
-                height: 36px;
+                height: 34px;
                 text-indent: 4px;
                 border-radius: 4px;
 
@@ -42,7 +38,7 @@
             }
 
             label {
-                font-size: 18px;
+                font-size: 16px;
             }
 
             .btn-primary {
@@ -52,9 +48,10 @@
                 height: 40px;
                 font-size: 18px;
                 width: 100%;
-                font-weight: 500;
+                font-weight: 600;
                 border-radius: 4px;
                 box-shadow: 3px 3px 3px rgb(167, 166, 166);
+                margin-top: 20px;
 
                 &:hover {
                     box-shadow: 0 0 0;
@@ -67,16 +64,6 @@
                 }
             }
 
-        }
-
-        .google-btn {
-            position: relative;
-            top: 40px;
-        }
-
-        .login-link {
-            bottom: 130px;
-            position: absolute;
         }
     }
 }

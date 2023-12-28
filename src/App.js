@@ -1,22 +1,23 @@
-import { useSelector } from "react-redux";
-import RequireUser from "./components/RequireUser";
-import Feed from "./components/feed/Feed";
-import Profile from "./components/profile/Profile";
-import UpdateProfile from "./components/updateProfile/UpdateProfile";
-import Home from "./pages/home/Home";
-import Login from "./pages/login/Login";
-import Signup from "./pages/signup/Signup";
-import BookmarkSection from "./components/BookmarkSection/BookmarkSection";
-import { Routes, Route } from "react-router-dom";
-import LoadingBar from "react-top-loading-bar";
-import { useEffect, useRef } from "react";
-import OnlyNotLoggedIn from "./components/OnlyNotLoggedIn";
+import { Route, Routes } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+import { useEffect, useRef } from "react";
+
+import Feed from "./components/feed/Feed";
+import Home from "./pages/home/Home";
+import LoadingBar from "react-top-loading-bar";
+import Login from "./pages/login/Login";
+import OnlyNotLoggedIn from "./components/OnlyNotLoggedIn";
+import Profile from "./components/profile/Profile";
+import RequireUser from "./components/RequireUser";
+import Signup from "./pages/signup/Signup";
+import UpdateProfile from "./components/updateProfile/UpdateProfile";
+import { useSelector } from "react-redux";
+
 export const TOAST_SUCCESS = "toast_success";
 export const TOAST_FAILURE = "toast_failure";
 function App() {
-  const isLoading = useSelector((state) => state.appConfigReducer.isLoading);
   const toastData = useSelector((state) => state.appConfigReducer.toastData);
+  const isLoading = useSelector((state) => state.appConfigReducer.isLoading);
   const loadingRef = useRef(null);
   useEffect(() => {
     if (isLoading) {
@@ -47,7 +48,6 @@ function App() {
             <Route path="/" element={<Feed />} />
             <Route path="/profile/:userId" element={<Profile />} />
             <Route path="/updateProfile" element={<UpdateProfile />} />
-            <Route path="/bookmark" element={<BookmarkSection />} />
           </Route>
         </Route>
         <Route element={<OnlyNotLoggedIn />}>

@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { FiSearch } from "react-icons/fi";
-import { axiosClient } from "../../utiles/axiosClient";
 import "./SearchBar.scss";
+
+import React, { useEffect, useState } from "react";
+
+import { FiSearch } from "react-icons/fi";
 import SearchProfile from "../searchProfile/SearchProfile";
+import { axiosClient } from "../../utiles/axiosClient";
+
 function SearchBar() {
+  const [open, setOpen] = useState(false);
   const [inputName, setInputName] = useState("");
   const [userList, setUserList] = useState([]);
   async function allUserList(value) {
@@ -12,36 +16,40 @@ function SearchBar() {
     });
     if (value) {
       setUserList(response.result);
+      setOpen(true);
     } else {
       setUserList([]);
+      setOpen(false);
     }
   }
   useEffect(() => {
     allUserList(inputName);
   }, [inputName]);
-  // console.log("this is the userList ", userList);
   return (
-    <div className="search-container">
+    <div className="search-box">
       <div className="search-icon">
         <FiSearch className="icon" />
       </div>
-      <div className="search-box">
-        <div className="search-space">
-          <input
-            type="text"
-            placeholder="Search"
-            value={inputName}
-            onChange={(e) => {
-              setInputName(e.target.value);
-            }}
-          />
-        </div>
+      <input
+        type="text"
+        placeholder="Search"
+        value={inputName}
+        onChange={(e) => {
+          setInputName(e.target.value);
+        }}
+      />
+      {open && (
         <div className="search-result">
           {userList?.users?.map((item) => (
-            <SearchProfile props={item} />
+            <SearchProfile
+              info={item}
+              closeFunction={() => {
+                setOpen(false);
+              }}
+            />
           ))}
         </div>
-      </div>
+      )}
     </div>
   );
 }

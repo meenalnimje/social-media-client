@@ -1,21 +1,23 @@
-import React from "react";
 import "./SearchProfile.scss";
+
 import Avatar from "../avatar/Avatar";
+import React from "react";
 import { useNavigate } from "react-router-dom";
-function SearchProfile({ props }) {
+
+function SearchProfile(props) {
   const navigate = useNavigate();
   return (
-    <div>
-      <Avatar src={props?.avatar?.url} />
-      <h4
-        className="name"
-        onClick={() => {
-          navigate(`/profile/${props._id}`);
-        }}
-      >
-        {props.name}
-      </h4>
-      <h5 className="info">Follow</h5>
+    <div
+      className="search-profile"
+      onClick={() => {
+        navigate(`/profile/${props?.info._id}`);
+        props?.closeFunction();
+      }}
+    >
+      <div className="profile-icon">
+        <Avatar src={props?.info?.avatar?.url} />
+      </div>
+      <h4 className="name">{props?.info?.name}</h4>
     </div>
   );
 }

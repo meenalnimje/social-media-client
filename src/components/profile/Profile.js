@@ -1,11 +1,14 @@
-import React, { useEffect, useState } from "react";
-import Post from "../../components/post/Post";
 import "./Profile.scss";
-import { useNavigate, useParams } from "react-router-dom";
-import CreatePost from "../createPost/CreatePost";
+
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserInfo } from "../../redux/slice/postSlice";
+import { useNavigate, useParams } from "react-router-dom";
+
+import CreatePost from "../createPost/CreatePost";
+import Post from "../../components/post/Post";
 import { followUnfollow } from "../../redux/slice/feedSlice";
+import { getUserInfo } from "../../redux/slice/postSlice";
+
 function Profile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -80,13 +83,6 @@ function Profile() {
                 Update Profile
               </button>
             )}
-            <button
-              onClick={() => {
-                navigate("/bookmark");
-              }}
-            >
-              Bookmark post
-            </button>
           </div>
         </div>
       </div>

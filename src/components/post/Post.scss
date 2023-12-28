@@ -1,30 +1,31 @@
 .post {
     border: 1px solid var(--border-color);
+    // border: 2px solid red;
     width: 70%;
     margin-left: 150px;
-    margin-top: 20px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     border-radius: 4px;
 
-    .avatar {
-        width: 60px;
-        height: 30px;
-    }
 
 
     .heading {
-        gap: 40px;
+        gap: 20px;
         display: flex;
         align-items: center;
         margin-left: 10px;
-        margin-top: 8px;
+        height: 60px;
+
         border-bottom: 1px solid var(--border-color);
         cursor: pointer;
-        // border: 2px solid red;
 
+        .profile-icon {
+            height: 60px;
+        }
     }
 
     .mid {
-        height: 400px;
+        height: 350px;
 
         img {
             width: 100%;
@@ -34,14 +35,13 @@
     }
 
     .footer {
-        padding: 20px;
 
+        padding: 10px;
 
         .like {
             display: flex;
             gap: 10px;
             align-items: center;
-            // justify-content: space-between;
             // border: 2px solid red;
 
             .icon {
@@ -49,13 +49,15 @@
             }
         }
 
-        .caption {
-            margin-top: 12px;
-        }
+        .profile-info {
+            .caption {
+                margin-top: 12px;
+            }
 
-        .time-ago {
-            margin-top: 12px;
-            color: #aaa;
+            .time-ago {
+                margin-top: 12px;
+                color: #aaa;
+            }
         }
     }
 }

@@ -1,8 +1,11 @@
-import React, { useState } from "react";
 import "./Signup.scss";
-import { SiMediamarkt } from "react-icons/si";
+
+import React, { useState } from "react";
+
 import { Link } from "react-router-dom";
+import { SiMediamarkt } from "react-icons/si";
 import { axiosClient } from "../../utiles/axiosClient";
+
 function Signup() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -23,9 +26,6 @@ function Signup() {
   return (
     <div className="container center">
       <div className="signup">
-        <div className="icon">
-          <SiMediamarkt />
-        </div>
         <h2 className="heading">Sign up</h2>
         <form className="signup-form">
           <label htmlFor="name">Name:</label>

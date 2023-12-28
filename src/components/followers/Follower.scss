@@ -3,15 +3,27 @@
     width: 100%;
     display: flex;
     align-items: center;
-    margin-top: 10px;
     justify-content: space-around;
     cursor: pointer;
 
-    .follow-link {
-        background-color: var(--accent-color);
-        color: white;
-        padding: 6px 12px;
-        font-size: 18px;
-        border-radius: 5px;
+    .profile-icon {
+        width: 20%;
+        height: 100%;
+        // border: 2px solid red;
+    }
+
+    .name {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .button {
+        width: 40%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // border: 2px solid red;
+        height: 100%;
     }
 }

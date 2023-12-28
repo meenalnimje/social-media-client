@@ -1,10 +1,13 @@
-import React, { useState } from "react";
 import "./Login.scss";
-import { SiMediamarkt } from "react-icons/si";
-import { Link, useNavigate } from "react-router-dom";
-import { axiosClient } from "../../utiles/axiosClient";
+
 import { KEY_ACCESS_TOKEN, setItem } from "../../utiles/localStorageManager";
+import { Link, useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+
+import { SiMediamarkt } from "react-icons/si";
+import { axiosClient } from "../../utiles/axiosClient";
 import { useRef } from "react";
+
 // import { useAuth0 } from "@auth0/auth0-react";
 function Login() {
   const navigate = useNavigate();
@@ -38,9 +41,6 @@ function Login() {
   return (
     <div className="container center">
       <div className="login">
-        <div className="icon">
-          <SiMediamarkt />
-        </div>
         <h2 className="heading">Login</h2>
         <form className="login-form">
           <label htmlFor="email">Email:</label>
@@ -60,26 +60,18 @@ function Login() {
             }}
             ref={passwordRef}
           />
-          <label htmlFor="showpassword">show password</label>
-          <input
-            type="checkbox"
-            name="showpassword"
-            id="showpassword"
-            checked={showPassword ? false : true}
-            onClick={handleShowPassword}
-          />
+          <div className="password-toggle">
+            <label htmlFor="showpassword">show password</label>
+            <input
+              type="checkbox"
+              name="showpassword"
+              id="showpassword"
+              checked={showPassword ? false : true}
+              onClick={handleShowPassword}
+            />
+          </div>
           <input type="submit" className="btn-primary" onClick={handleSubmit} />
         </form>
-        {/* <button className="btn-primary google-btn" onClick={handleGoogleAuth}>
-          login with google
-        </button> */}
-        {/* <h2>or</h2> */}
-        {/* <button
-          onClick={() => loginWithRedirect()}
-          className="btn-primary google-btn"
-        >
-          Log in
-        </button> */}
         <p className="signup-link">
           Do not have an account?<Link to="/signup">Sign up</Link>
         </p>
