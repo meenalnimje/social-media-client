@@ -1,23 +1,25 @@
 import "./Post.scss";
 
-import {
-  BookmarkPost,
-  likeUnlike,
-} from "../../redux/slice/postSlice";
-import React, { useState } from "react";
+import { BookmarkPost, likeUnlike } from "../../redux/slice/postSlice";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { AiOutlineHeart } from "react-icons/ai";
 import Avatar from "../avatar/Avatar";
-import { BsBookmark } from "react-icons/bs";
+import Comments from "../comments/Comments";
 import { FcLike } from "react-icons/fc";
 import { TOAST_SUCCESS } from "../../App";
+import { axiosClient } from "../../utiles/axiosClient";
+import { setLoading } from "../../redux/slice/appConfigSlice";
 import { showToast } from "../../redux/slice/appConfigSlice";
 import { useNavigate } from "react-router-dom";
 
 function Post({ post }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [open, setOpen] = useState(false);
+  const [comments, setComments] = useState([]);
+  const [commenttxt, setCommenttxt] = useState("");
   const [isLiked, setIsLiked] = useState(post?.isLiked);
   function handlePostLike() {
     dispatch(
@@ -35,7 +37,35 @@ function Post({ post }) {
   function handleLikebtn() {
     setIsLiked(!isLiked);
   }
-  const myProfile = useSelector((state) => state.appConfigReducer.myProfile);
+  const fetchComments = async () => {
+    try {
+      const response = await axiosClient.get(`/comment/${post._id}`);
+      console.log("result of comments", response);
+      setComments(response.result.comment);
+    } catch (e) {
+      console.log("this error is from comments,", e);
+    }
+  };
+  async function addComment() {
+    try {
+      dispatch(setLoading(true));
+      // console.log("description", commenttxt);
+      const response = await axiosClient.post("/comment/", {
+        postId: post._id,
+        desc: commenttxt,
+      });
+      console.log("comment is added", response);
+    } catch (e) {
+      console.log("this error is from addcomments,", e);
+    } finally {
+      dispatch(setLoading(false));
+      setCommenttxt(" ");
+      fetchComments();
+    }
+  }
+  useEffect(() => {
+    fetchComments();
+  }, [post._id]);
   return (
     <div className="post">
       <div className="heading">
@@ -70,6 +100,33 @@ function Post({ post }) {
         </div>
         <div className="profile-info">
           <p className="caption">{post?.caption}</p>
+          <div className="comment-box">
+            <button id="myBtn" onClick={() => setOpen(true)}>
+              view comments
+            </button>
+            <div id="myPopup" className={open ? "show popup" : "popup"}>
+              <div className="popup-content">
+                <div className="all-comments">
+                  {comments.map((item) => (
+                    <Comments info={item} />
+                  ))}
+                </div>
+                <div className="add-comment">
+                  <input
+                    type="text"
+                    placeholder="Add a comment...."
+                    onChange={(e) => setCommenttxt(e.target.value)}
+                  />
+                  <button onClick={addComment} className="btn-primary">
+                    Add
+                  </button>
+                </div>
+                <button id="closePopup" onClick={() => setOpen(false)}>
+                  Close
+                </button>
+              </div>
+            </div>
+          </div>
           <h6 className="time-ago">{post?.timeAgo}</h6>
         </div>
       </div>

@@ -1,0 +1,22 @@
+.comments {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+
+
+    .profile-icon {
+        width: 20%;
+        // border: 2px solid gold;
+    }
+
+    .comment {
+        // border: 2px solid gold;
+        width: 80%;
+        // height: 100%;
+        padding: 13px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+    }
+}

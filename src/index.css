@@ -37,6 +37,15 @@ p{
   border-radius: 4px;
   cursor: pointer;
 }
+.btn-delete{
+  background-color: tomato;
+  color: white;
+  font-weight: bold;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .btn-primary:hover{
   
   background-color: #5d9eff;

@@ -3,10 +3,10 @@
 import "./Follower.scss";
 
 import React, { useState } from "react";
+import { followUnfollow, getFeedData } from "../../redux/slice/feedSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import Avatar from "../avatar/Avatar";
-import { followUnfollow } from "../../redux/slice/feedSlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 

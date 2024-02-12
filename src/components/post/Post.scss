@@ -7,8 +7,6 @@
     margin-bottom: 50px;
     border-radius: 4px;
 
-
-
     .heading {
         gap: 20px;
         display: flex;
@@ -52,6 +50,75 @@
         .profile-info {
             .caption {
                 margin-top: 12px;
+            }
+
+            .comment-box {
+                #myBtn {
+                    background: transparent;
+                    // border: 2px solid sienna;
+                    border: none;
+                    margin-top: 6px;
+                    font-size: 15px;
+                    cursor: pointer;
+                    color: #888888;
+                }
+
+                .popup {
+                    position: fixed;
+                    z-index: 1;
+                    left: 0;
+                    top: 0;
+                    width: 100%;
+                    height: 100%;
+                    overflow: auto;
+                    background-color: rgba(0, 0, 0, 0.4);
+                    display: none;
+                }
+
+                .popup-content {
+                    background-color: white;
+                    margin: 10% auto;
+                    padding: 12px;
+                    border: 1px solid #888888;
+                    width: 30%;
+                    font-weight: bolder;
+                    // border: 2px solid red;
+                    border-radius: 10px;
+                    display: flex;
+                    flex-direction: column-reverse;
+
+
+                    .all-comments {
+                        // border: 2px solid red;
+                        // width: 100%;
+                    }
+
+                    .add-comment {
+                        margin-top: 50px;
+                        margin-bottom: 50px;
+                        justify-content: center;
+                        // border: 2px solid black;
+                        display: flex;
+                        flex-direction: row-reverse;
+
+                        input {
+                            width: 70%;
+                        }
+                    }
+                }
+
+                .popup-content button {
+                    display: block;
+                    margin: 0 auto;
+                }
+
+                .show {
+                    display: block;
+                }
+
+                h1 {
+                    color: green;
+                }
             }
 
             .time-ago {

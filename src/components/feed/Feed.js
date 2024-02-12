@@ -1,9 +1,12 @@
-import React, { useEffect } from "react";
 import "./Feed.scss";
-import Post from "../post/Post";
-import Followers from "../followers/Followers";
+
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
+import Followers from "../followers/Followers";
+import Post from "../post/Post";
 import { getFeedData } from "../../redux/slice/feedSlice";
+
 function Feed() {
   const dispatch = useDispatch();
   const feedData = useSelector((state) => state.feedDataReducer.feedData);
@@ -14,11 +17,15 @@ function Feed() {
   return (
     <div className="feed">
       <div className="content">
-        <div className="left">
-          {feedData?.posts?.map((item) => (
-            <Post post={item} key={item._id} />
-          ))}
-        </div>
+        {feedData?.posts?.length === 0 ? (
+          <div className="left loading">Connect with new ppl</div>
+        ) : (
+          <div className="left">
+            {feedData?.posts?.map((item) => (
+              <Post post={item} key={item._id} />
+            ))}
+          </div>
+        )}
         <div className="right">
           <div className="followings">
             <h3 className="title">You are Following</h3>

@@ -1,12 +1,13 @@
 import "./Signup.scss";
 
+import { Link, useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 
-import { Link } from "react-router-dom";
 import { SiMediamarkt } from "react-icons/si";
 import { axiosClient } from "../../utiles/axiosClient";
 
 function Signup() {
+  const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -18,7 +19,13 @@ function Signup() {
         email,
         password,
       });
-      // console.log("user created");
+      console.log("response of signup", response);
+      if (response.statusCode === 201) {
+        alert("user created successfully");
+        navigate("/login");
+      } else {
+        alert(`${response.data.message}`);
+      }
     } catch (e) {
       console.log("this error is from signup side", e);
     }
