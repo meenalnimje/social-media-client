@@ -36,9 +36,5 @@ Welcome to our Social Media Web Application! This application allows users to co
 5. Run the client: npm run client
 6. Open your browser and navigate to `http://localhost:3000` to use the application.
 
-
-
 ## Demo
-
-
-
+- click for video:-https://youtu.be/svq7S3q1k8s
